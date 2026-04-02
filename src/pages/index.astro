@@ -1,0 +1,142 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GuideCard from '../components/GuideCard.astro';
+
+const guides = (await getCollection('guides'))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
+
+const seoTitle = 'Voyagrid | Luxury travel landing page in Astro';
+const seoDescription = 'A premium English travel landing page built in Astro with clean UI/UX, mobile popup navigation, reusable content templates, and SEO-friendly architecture.';
+---
+
+<BaseLayout title={seoTitle} description={seoDescription}>
+  <Header />
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Premium journeys • fast-loading Astro site</div>
+          <h1>Travel pages that look expensive and convert smoothly.</h1>
+          <p class="hero-copy lead">Voyagrid is a travel landing page starter designed for trust, clarity, and mobile-first browsing. It gives you a polished homepage, reusable guide templates, clean CTA sections, and a responsive popup hamburger menu for smaller screens.</p>
+
+          <div class="hero-cta">
+            <a href="#guides" class="button">Explore guides</a>
+            <a href="#experiences" class="button-secondary">See the layout system</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat-card">
+              <div class="stat-value">92%</div>
+              <div class="meta">mobile usability focus</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">3 min</div>
+              <div class="meta">to add a new guide page</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">SEO</div>
+              <div class="meta">meta tags, sitemap, semantic structure</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-wrap glass-card">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Scenic alpine lake with travelers enjoying a quiet premium getaway" />
+          </div>
+          <div class="floating-card">
+            <div class="eyebrow">Handpicked route</div>
+            <h3>7-day alpine wellness escape</h3>
+            <p class="card-copy">Crafted for travelers who want comfort, strong visual storytelling, and a landing page that feels editorial.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="logos">
+          <div class="logo-pill">Boutique Stays</div>
+          <div class="logo-pill">Local Experts</div>
+          <div class="logo-pill">Flexible Routes</div>
+          <div class="logo-pill">Wellness Travel</div>
+          <div class="logo-pill">Remote Escapes</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiences">
+      <div class="container">
+        <div class="eyebrow">Why this UI works</div>
+        <h2 class="section-title">Built for premium perception, not clutter.</h2>
+        <p class="section-copy lead">The structure uses clear scanning patterns, strong imagery, layered cards, and focused calls to action. It feels modern without becoming hard to edit.</p>
+
+        <div class="grid features-grid" style="margin-top:1.75rem;">
+          <article class="feature-card">
+            <h3>Editorial hero section</h3>
+            <p class="card-copy">Large headline, strong contrast, fast trust signals, and a visual block that sells the feeling of the trip immediately.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Responsive popup menu</h3>
+            <p class="card-copy">On mobile, the hamburger opens a clean overlay panel that feels premium and remains easy to tap with one hand.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Simple content workflow</h3>
+            <p class="card-copy">Add more destination pages by duplicating a markdown file inside <strong>src/content/guides</strong>. No messy page builder needed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="destinations">
+      <div class="container split-section">
+        <div class="side-image glass-card">
+          <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80" alt="Traveler enjoying a warm sunset over a coastal destination" loading="lazy" />
+        </div>
+        <div>
+          <div class="eyebrow">Content strategy</div>
+          <h2 class="section-title">A landing page that can grow into a real travel brand.</h2>
+          <p class="section-copy">This setup is not just a single static page. It is structured so you can expand into destination hubs, blog-style guides, seasonal offers, and search-friendly pages later.</p>
+
+          <div class="check-list">
+            <div class="check-item"><strong>Reusable layouts:</strong> shared header, footer, and SEO metadata keep the whole site consistent.</div>
+            <div class="check-item"><strong>Guide templates:</strong> each new trip can become its own content page with title, image, excerpt, and metadata.</div>
+            <div class="check-item"><strong>SEO-ready base:</strong> semantic headings, canonical tags, Open Graph tags, and sitemap integration are already included.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="guides">
+      <div class="container">
+        <div class="eyebrow">Starter content</div>
+        <h2 class="section-title">Featured travel guides</h2>
+        <p class="section-copy lead">These sample entries come from the content collection, so you can scale the site by adding more markdown files.</p>
+
+        <div class="grid guides-grid" style="margin-top:1.75rem;">
+          {guides.map((guide) => <GuideCard guide={guide} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <div class="eyebrow">Launch-ready template</div>
+            <h2 style="margin:0.9rem 0 0.5rem;">Use this as your main landing page or the base for a full travel site.</h2>
+            <p class="section-copy">Swap the brand, change the destinations, update the contact CTA, and keep adding guides without touching the main layout.</p>
+          </div>
+          <a href="/guides/quiet-lakes-escape/" class="button">Open sample guide</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

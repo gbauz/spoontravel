@@ -1,0 +1,20 @@
+---
+const { guide } = Astro.props;
+const url = `/guides/${guide.slug}/`;
+---
+
+<a href={url} class="guide-card">
+  <div class="guide-card-image">
+    <img src={guide.data.image} alt={guide.data.imageAlt} loading="lazy" />
+  </div>
+  <div class="guide-card-body">
+    <div class="eyebrow">{guide.data.category}</div>
+    <h3>{guide.data.title}</h3>
+    <p class="card-copy">{guide.data.excerpt}</p>
+    <div class="meta-row">
+      <span>{guide.data.location}</span>
+      <span>•</span>
+      <span>{guide.data.duration}</span>
+    </div>
+  </div>
+</a>
