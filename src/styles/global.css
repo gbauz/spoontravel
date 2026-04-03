@@ -18,6 +18,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 120px;
+  border: 2px dashed red;
 }
 * {
   box-sizing: border-box;
