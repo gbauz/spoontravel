@@ -37,17 +37,31 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'Voyagrid',
-      url: Astro.site?.toString() ?? 'https://example.com',
-      description
-    })} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Voyagrid',
+        url: Astro.site?.toString() ?? 'https://example.com',
+        description
+      })}
+    />
   </head>
   <body>
     <div class="site-shell">
       <slot />
+
+      <div class="ad-block">
+        <div id="container-d970f5c9f41fe59df2fb59ee22af1e82"></div>
+      </div>
     </div>
+
+    <script
+      is:inline
+      async="async"
+      data-cfasync="false"
+      src="https://pl28099716.profitablecpmratenetwork.com/d970f5c9f41fe59df2fb59ee22af1e82/invoke.js"
+    ></script>
   </body>
 </html>

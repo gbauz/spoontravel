@@ -13,7 +13,12 @@
   --radius-sm: 12px;
   --container: 1180px;
 }
-
+.ad-block {
+  margin: 32px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 * {
   box-sizing: border-box;
 }
