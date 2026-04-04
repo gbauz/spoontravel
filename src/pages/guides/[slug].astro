@@ -37,9 +37,27 @@ const seoDescription = guide.data.seoDescription ?? guide.data.excerpt;
           <span>{guide.data.publishDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
         </div>
         <p class="article-copy lead">{guide.data.excerpt}</p>
+
         <div class="prose">
           <Content />
         </div>
+
+        <div class="ad-block">
+          <div id="container-d970f5c9f41fe59df2fb59ee22af1e82"></div>
+        </div>
+
+        <script is:inline>
+          const adContainerId = "container-d970f5c9f41fe59df2fb59ee22af1e82";
+
+          if (!document.querySelector('script[data-ad-network="profitablecpmratenetwork"]')) {
+            const script = document.createElement('script');
+            script.src = "https://pl28099716.profitablecpmratenetwork.com/d970f5c9f41fe59df2fb59ee22af1e82/invoke.js";
+            script.async = true;
+            script.setAttribute("data-cfasync", "false");
+            script.setAttribute("data-ad-network", "profitablecpmratenetwork");
+            document.body.appendChild(script);
+          }
+        </script>
       </article>
     </div>
   </main>
