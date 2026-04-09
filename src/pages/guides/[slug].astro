@@ -3,7 +3,6 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-
 export async function getStaticPaths() {
   const guides = await getCollection('guides');
   return guides.map((guide) => ({
@@ -11,16 +10,13 @@ export async function getStaticPaths() {
     props: { guide }
   }));
 }
-
 const { guide } = Astro.props;
 const { Content } = await render(guide);
 const seoTitle = guide.data.seoTitle ?? `${guide.data.title} | Voyagrid`;
 const seoDescription = guide.data.seoDescription ?? guide.data.excerpt;
 ---
-
 <BaseLayout title={seoTitle} description={seoDescription} image={guide.data.image}>
   <Header />
-
   <main class="section">
     <div class="container article-shell">
       <div class="article-hero">
@@ -37,18 +33,16 @@ const seoDescription = guide.data.seoDescription ?? guide.data.excerpt;
           <span>{guide.data.publishDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
         </div>
         <p class="article-copy lead">{guide.data.excerpt}</p>
-
         <div class="prose">
           <Content />
         </div>
 
+        <!-- Ad block: Profitable CPM Rate Network -->
         <div class="ad-block">
           <div id="container-d970f5c9f41fe59df2fb59ee22af1e82"></div>
         </div>
-
         <script is:inline>
           const adContainerId = "container-d970f5c9f41fe59df2fb59ee22af1e82";
-
           if (!document.querySelector('script[data-ad-network="profitablecpmratenetwork"]')) {
             const script = document.createElement('script');
             script.src = "https://pl28099716.profitablecpmratenetwork.com/d970f5c9f41fe59df2fb59ee22af1e82/invoke.js";
@@ -58,9 +52,23 @@ const seoDescription = guide.data.seoDescription ?? guide.data.excerpt;
             document.body.appendChild(script);
           }
         </script>
+
+        <!-- Ad block: Adsterra -->
+        <div class="ad-block">
+          <script is:inline>
+            atOptions = {
+              'key' : 'f3898457bc9b935ff96bd801b637ffc5',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+          </script>
+          <script is:inline src="https://www.highperformanceformat.com/f3898457bc9b935ff96bd801b637ffc5/invoke.js"></script>
+        </div>
+
       </article>
     </div>
   </main>
-
   <Footer />
 </BaseLayout>
